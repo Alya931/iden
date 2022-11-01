@@ -1,0 +1,69 @@
+﻿ @model IEnumerable<UserViewModel>
+
+<h1>Users</h1>
+ 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Username
+            <th>
+                Roles
+            </th>
+            <th>
+                Action
+            </th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item  in Model)
+            {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.Email
+            <td>
+                @item.UserName
+            <td>
+               @string.Join(",",item.Roles.ToList())
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-for="User" asp-action="MangeRole" asp-route-id="@item.Id"> Mang Role</a>
+
+
+                <a class="btn btn-primary" asp-for="User" asp-action="ManageUserClaims" asp-route-userId="@item.Id">
+                    Manage Claims
+                </a>
+
+                <a class="btn btn-primary" asp-for="User" asp-action="ManageUserClaims" asp-route-userId="@item.Id">
+                    Add Clims 
+                </a>
+
+
+
+
+
+
+            </td>
+            
+        </tr>
+
+            }
+    </tbody>
+
+</table>
